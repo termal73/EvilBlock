@@ -1,6 +1,13 @@
 import os
 import socket
 from scapy.all import *
+import signal
+import re
+import subprocess
+
+def handle_ctrl_c(signal, frame):
+    print("\nPrograma detenido por el usuario.")
+    sys.exit(0)
 
 # Ejecutar el comando arp-scan
 result = subprocess.run(["arp-scan", "--localnet"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -37,6 +44,8 @@ for ip in sorted_ips:
 
 # Lista de direcciones IP a bloquear
 ips_to_block = [ip for ip in ips if ip not in (host_ip, gateway)]
+
+signal.signal(signal.SIGINT, handle_ctrl_c)
 
 stop = False
 
