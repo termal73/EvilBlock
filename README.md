@@ -19,7 +19,7 @@ It's very simple to execute this script. Once you have installed all the modules
 sudo python3 EvilBlock.py
 ```
 
-The script won't stop if you don't press ```Ctrl + c```.
+The script won't stop if you don't press ```Ctrl + c```, or close the terminal.
 
 
 Now we have a web interface that is launched on this respository https://github.com/Poliestireno90/Web-EvilBlock
