@@ -33,15 +33,29 @@ gateway = os.popen("ip route show default | awk '/default/ {print $3}'").read().
 def ip_to_tuple(ip):
     return tuple(map(int, ip.split(".")))
 
+archivo2 = open("ip.txt","w")
 sorted_ips = sorted(ips, key=ip_to_tuple)
 for ip in sorted_ips:
     if ip == gateway:
         print(f"{ip} (puerta de enlace)")
+        archivo2.writelines(f"{ip} (puerta de enlace)\n")
     elif ip == host_ip:
         print(f"{ip} (host)")
+        archivo2.writelines(f"{ip} (host)\n")
     else:
         print(ip)
+        archivo2.writelines(ip)
+        archivo2.write("\n")
 
+archivo2.close()
+#Escribe las ip en la pagina php
+
+#archivo = open("ip.txt", "w")
+#archivo.writelines(sorted_ips)
+#archivo.close()
+
+#with open('ip.txt', 'w') as f:
+#    f.write(ip)
 
 # Lista de direcciones IP a bloquear
 ips_to_block = [ip for ip in ips if ip not in (host_ip, gateway)]
