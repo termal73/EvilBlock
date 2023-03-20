@@ -14,6 +14,7 @@ For python3:
 ```bash
 sudo apt-get install python3
 sudo apt-get install pip
+sudo apt-get install arp-scan
 sudo pip install scapy
 ```
 
